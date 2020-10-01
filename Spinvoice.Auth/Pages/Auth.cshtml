@@ -1,0 +1,24 @@
+﻿@page
+@model AuthModel
+@{
+    ViewData["Title"] = "Spinvoice Auth";
+}
+<h1>@ViewData["Title"]</h1>
+
+<script type="text/javascript">
+function copyToClipboard() {
+  var copyText = document.getElementById("AuthKeyTextInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+  document.execCommand("copy");
+  
+  alert("Copied!")
+}
+</script>
+
+<br/>
+<p>Copy this authentication key into Spinvoice:</p>
+<input id="AuthKeyTextInput" type="text" readonly="readonly" size="@(Model.AuthKey.Length + 20)" value="@Model.AuthKey">
+<input type="button" onclick="copyToClipboard()" value="Copy to clipboard"/>
+<br/>
+<img src="bunny.png"/>
